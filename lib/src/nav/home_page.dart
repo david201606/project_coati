@@ -10,15 +10,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Coati'),
+        title: const Text('Koaty'),
         actions: [
-          IconButton(
+          /*IconButton(
               onPressed: () {
                 FirebaseFirestore.instance.collection('hi').get().then((value) {
                   print(value.docs.length);
                 });
               },
-              icon: Icon(Icons.rocket_rounded))
+              icon: Icon(Icons.rocket_rounded))*/
         ],
       ),
       body: ListView(

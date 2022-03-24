@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Coati',
+      title: 'Koaty',
       theme: MyTheme.define(ColorsPalettes().lightColors()),
       darkTheme: MyTheme.define(ColorsPalettes().darkColors()),
       home: const MenuPage(),
