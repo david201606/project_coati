@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coati/src/utils/user_preferences.dart';
 import 'package:flutter/material.dart';
 
 class BuddiesPage extends StatelessWidget {
-  const BuddiesPage({Key? key}) : super(key: key);
+  BuddiesPage({Key? key}) : super(key: key);
+  final UserPreferences _prefs = UserPreferences();
 
   @override
   Widget build(BuildContext context) {
@@ -9,19 +12,34 @@ class BuddiesPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Buddies'),
       ),
-      body: Center(
-          child: Column(
-        mainAxisSize: MainAxisSize.min,
+      body: ListView(
         children: [
-          Icon(
-            Icons.sentiment_dissatisfied_rounded,
-            size: 200,
-            color: Theme.of(context).colorScheme.tertiaryContainer,
-          ),
-          Text('No tienes buddies agregados')
-        ],
-      )),
+          FutureBuilder(
+            future: FirebaseFirestore.instance
+                .collection('users')
+                .doc(_prefs.userID)
+                .get(),
+            builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+              if (snapshot.hasError) {
+                return Text("Something went wrong");
+              }
 
+              if (snapshot.hasData && !snapshot.data!.exists) {
+                return Text("Document does not exist");
+              }
+
+              if (snapshot.connectionState == ConnectionState.done) {
+                Map<String, dynamic> data =
+                    snapshot.data!.data() as Map<String, dynamic>;
+                return Text(
+                    "Full Name: ${data['full_name']} ${data['last_name']}");
+              }
+
+              return Text("loading");
+            },
+          )
+        ],
+      ),
     );
   }
 }

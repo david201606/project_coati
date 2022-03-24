@@ -16,8 +16,8 @@ class _MenuPageState extends State<MenuPage> {
   int selected = 0;
   List<Widget> pages = [
     const HomePage(),
-    const BuddiesPage(),
-    const ProfilePage(),
+    BuddiesPage(),
+    ProfilePage(),
   ];
 
   @override
@@ -26,6 +26,7 @@ class _MenuPageState extends State<MenuPage> {
       body: pages[selected],
       bottomNavigationBar: NavigationBar(
         selectedIndex: selected,
+        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
         onDestinationSelected: (value) {
           setState(() {
             selected = value;
@@ -33,8 +34,8 @@ class _MenuPageState extends State<MenuPage> {
         },
         destinations: const [
           NavigationDestination(
-            icon: Icon(Icons.rocket_rounded),
-            label: 'Salas',
+            icon: Icon(Icons.rocket_launch_rounded),
+            label: 'Partidas',
           ),
           NavigationDestination(
             icon: Icon(Icons.sports_kabaddi_rounded),
