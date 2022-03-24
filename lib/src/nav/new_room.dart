@@ -12,23 +12,23 @@ class NewRoom extends StatelessWidget {
       body: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
             child: Text(
               'Qué quieren jugar?',
               style: Theme.of(context).textTheme.displaySmall,
             ),
           ),
           ListTile(
-            leading: Icon(Icons.accessibility_new_rounded),
-            title: Text('Horcado'),
-            subtitle: Text('2-5 personas pueden jugar'),
+            leading: const Icon(Icons.accessibility_new_rounded),
+            title: const Text('Horcado'),
+            subtitle: const Text('2-5 personas pueden jugar'),
             onTap: (){
 
             },
           ),ListTile(
-            leading: Icon(Icons.accessibility_new_rounded),
-            title: Text('Destruye el barco'),
-            subtitle: Text('2 personas pueden jugar'),
+            leading: const Icon(Icons.accessibility_new_rounded),
+            title: const Text('Destruye el barco'),
+            subtitle: const Text('2 personas pueden jugar'),
             onTap: (){
 
             },
