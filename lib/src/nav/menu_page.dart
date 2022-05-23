@@ -15,7 +15,7 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   int selected = 0;
   List<Widget> pages = [
-    const HomePage(),
+    HomePage(),
     BuddiesPage(),
     ProfilePage(),
   ];
