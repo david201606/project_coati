@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coati/src/nav/struggle_page.dart';
+import 'package:coati/src/nav/upOrDownPage.dart';
 import 'package:coati/src/tic_tac_toe.dart';
 import 'package:coati/src/utils/user_preferences.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,19 @@ class HomePage extends StatelessWidget {
           title: Text('Retos'),
           subtitle: Text('Juega y despues reta'),
           leading: Icon(Icons.sports_esports_rounded),
-        )
+        ), ListTile(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const UpOrDown(),
+              ),
+            );
+          },
+          title: Text('¿Arriba o Abajo?'),
+          subtitle: Text('Adivina si esta arriba o abajo'),
+          leading: Icon(Icons.swap_vert_rounded),
+        ),
       ]),
     );
   }
