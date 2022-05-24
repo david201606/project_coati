@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../utils/auth_service.dart';
 import '../utils/dialogs.dart';
 
@@ -98,7 +99,7 @@ class _AuthPageState extends State<AuthPage> {
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                   primary: Theme.of(context).colorScheme.onPrimary,
-                backgroundColor:  Theme.of(context).colorScheme.primary,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                 ),
                 onPressed: email != '' && password != ''
                     ? () async {
