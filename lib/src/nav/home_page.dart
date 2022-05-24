@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coati/src/nav/Toca%20Toca.dart';
 import 'package:coati/src/nav/struggle_page.dart';
 import 'package:coati/src/tic_tac_toe.dart';
 import 'package:coati/src/utils/user_preferences.dart';
@@ -16,6 +17,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Koaty'),
         actions: const [
+
           /*IconButton(
               onPressed: () {
                 FirebaseFirestore.instance.collection('hi').get().then((value) {
@@ -35,7 +37,20 @@ class HomePage extends StatelessWidget {
               ),
             );
           },
-          title: Text('Retos'),
+          title: Text('Arriba o Abajo'),
+          subtitle: Text('Presiona el botón hasta que alguien pierda'),
+          leading: Icon(Icons.sports_esports_rounded),
+        ),
+        ListTile(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const TocaToca(),
+              ),
+            );
+          },
+          title: Text('Toca Toca'),
           subtitle: Text('Juega y despues reta'),
           leading: Icon(Icons.sports_esports_rounded),
         )

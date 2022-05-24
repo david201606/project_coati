@@ -24,12 +24,21 @@ class _AuthPageState extends State<AuthPage> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: Text(
-                'Inicio de Sesión',
+                'La peda de tu vida',
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium!
                     .copyWith(color: Theme.of(context).colorScheme.secondary),
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 30),
+              child: Image.asset(
+                'assets/Imagenes/vaso.png',
+               // width: 100,
+                height: 200,
+              ),
+
             ),
             TextFormField(
               onChanged: (value) {
@@ -98,7 +107,7 @@ class _AuthPageState extends State<AuthPage> {
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                   primary: Theme.of(context).colorScheme.onPrimary,
-                backgroundColor:  Theme.of(context).colorScheme.primary,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                 ),
                 onPressed: email != '' && password != ''
                     ? () async {
