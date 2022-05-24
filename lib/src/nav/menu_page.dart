@@ -15,9 +15,9 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   int selected = 0;
   List<Widget> pages = [
-    HomePage(),
+    HomePage(),/*
     BuddiesPage(),
-    ProfilePage(),
+    ProfilePage(),*/
   ];
 
   @override
@@ -37,14 +37,14 @@ class _MenuPageState extends State<MenuPage> {
             icon: Icon(Icons.rocket_launch_rounded),
             label: 'Partidas',
           ),
-          NavigationDestination(
+         /* NavigationDestination(
             icon: Icon(Icons.sports_kabaddi_rounded),
             label: 'Buddies',
           ),
           NavigationDestination(
             icon: Icon(Icons.account_circle_rounded),
             label: 'Perfil',
-          ),
+          ),*/
         ],
       ),
       floatingActionButtonLocation: selected == 0

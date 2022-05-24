@@ -1,6 +1,7 @@
 import 'package:coati/src/nav/auth_page.dart';
+import 'package:coati/src/nav/home_page.dart';
 import 'package:coati/src/nav/menu_page.dart';
-import 'package:coati/src/nav/strugle.dart';
+import 'package:coati/src/nav/struggle_page.dart';
 import 'package:coati/src/theme/theme_colors.dart';
 import 'package:coati/src/utils/user_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
       darkTheme: MyTheme.define(ColorsPalettes().darkColors()),
       // home: const TTTPage(),
       // home: _prefs.userID == '' ? const AuthPage() : const MenuPage(),
-      home: StruglePage(),
+      // home: StrugglePage(),
+      home: HomePage(),
     );
   }
 }
