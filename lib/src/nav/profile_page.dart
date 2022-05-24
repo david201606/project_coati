@@ -3,9 +3,14 @@ import 'package:coati/src/utils/auth_service.dart';
 import 'package:coati/src/utils/user_preferences.dart';
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   final UserPreferences _prefs = UserPreferences();
 
   @override
