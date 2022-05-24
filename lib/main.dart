@@ -2,6 +2,7 @@ import 'package:coati/src/nav/auth_page.dart';
 import 'package:coati/src/nav/home_page.dart';
 import 'package:coati/src/nav/menu_page.dart';
 import 'package:coati/src/nav/struggle_page.dart';
+import 'package:coati/src/nav/upOrDownPage.dart';
 import 'package:coati/src/theme/theme_colors.dart';
 import 'package:coati/src/utils/user_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
