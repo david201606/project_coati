@@ -201,13 +201,13 @@ class PlayingCard extends StatelessWidget {
                 Icon(
                   card.icon,
                   color: card.color,
-                  size: 140,
+                  size: 100,
                 ),
                 Text(
                   card.number,
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(
                       color: Theme.of(context).colorScheme.background,
-                      fontSize: 50),
+                      fontSize: 40),
                 )
               ],
             ),

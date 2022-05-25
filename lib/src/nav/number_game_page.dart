@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:coati/src/nav/upOrDownPage.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/card_obj.dart';
@@ -21,7 +22,7 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
 
   @override
   void initState() {
-    playingCard = PlayCard('', Colors.green, Icons.theater_comedy_rounded, 0);
+    playingCard = PlayCard('', Colors.green, Icons.play_arrow_rounded, 0);
     super.initState();
   }
 
@@ -37,6 +38,10 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
 
   mixDeck() {
     setState(() {
+      if (cardDeck.isEmpty) {
+        cardDeck = Deck().cards();
+      }
+
       int position = Random().nextInt(cardDeck.length);
       playingCard = cardDeck[position];
       cardDeck.removeAt(position);
@@ -47,7 +52,7 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Oops'),
+        title: Text('¡Shot!'),
         content: Text('Te echas un shot'),
         actions: [
           TextButton(
@@ -71,10 +76,9 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
         actions: [
           TextButton(
             onPressed: () {
-              mixDeck();
               Navigator.pop(context);
             },
-            child: Text('Listo'),
+            child: Text('Continuar'),
           ),
         ],
       ),
@@ -102,45 +106,36 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
                   card: playingCard,
                 ),
               ),
-              SizedBox(
-                width: (MediaQuery.of(context).size.width * .7) - 100,
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Text(
-                        cardsOrder[position],
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                    ),
-                    Expanded(
-                      child: ElevatedButton(
-                          onPressed: () {
-                            starting= false;
-                            setState((){
-
-                            });
-                            PlayCard pastCard = playingCard;
-                            mixDeck();
-
-                            nextPosition();
-
-                            /*if (playingCard.weight == 100) {
-                              allShotDialog();
-                            } else {
-                              if (playingCard.weight > pastCard.weight) {
-                                shotDialog();
-                              }
-                            }*/
-                          },
-                          style: ElevatedButton.styleFrom(
-                              primary: Theme.of(context).colorScheme.primary,
-                              onPrimary:
-                                  Theme.of(context).colorScheme.onPrimary),
-                          child: Text('Siguente Carta')),
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Text(
+                  starting ? '' : cardsOrder[position],
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
+              ),
+              SizedBox(
+                width: (MediaQuery.of(context).size.width * .7),
+                child: ElevatedButton(
+                    onPressed: () {
+                      mixDeck();
+                      if (!starting) nextPosition();
+
+                      if (playingCard.number == '') {
+                        allShotDialog();
+                      } else {
+                        if (playingCard.number == cardsOrder[position]) {
+                          shotDialog();
+                        }
+                      }
+
+                      setState(() {
+                        starting = false;
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(
+                        primary: Theme.of(context).colorScheme.primary,
+                        onPrimary: Theme.of(context).colorScheme.onPrimary),
+                    child: Text(starting ? 'Empezar' : 'Siguente Carta')),
               ),
             ],
           ),
@@ -157,7 +152,7 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
                     },
                     icon: const Icon(Icons.stop_rounded, color: Colors.white)),
                 Text(
-                  'Restan ${cardDeck.length} cartas',
+                  'Juego sin fin',
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       color: Theme.of(context).colorScheme.background),
                 ),
@@ -165,98 +160,6 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
             ),
           ),
         ]),
-      ),
-    );
-  }
-}
-
-class PlayingCard extends StatelessWidget {
-  final PlayCard card;
-
-  const PlayingCard({
-    Key? key,
-    required this.card,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: const BorderRadius.all(
-        Radius.circular(30),
-      ),
-      child: Container(
-        width: MediaQuery.of(context).size.width * .7,
-        height: MediaQuery.of(context).size.height * .5,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.black, width: 3),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(30),
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      Text(
-                        card.number,
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                      Icon(card.icon, color: card.color, size: 30),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Stack(
-              alignment: Alignment.center,
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  card.icon,
-                  color: card.color,
-                  size: 140,
-                ),
-                Text(
-                  card.number,
-                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.background,
-                      fontSize: 50),
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      Transform.rotate(
-                          angle: 3.14159,
-                          child: Icon(
-                            card.icon,
-                            color: card.color,
-                            size: 30,
-                          )),
-                      Transform.rotate(
-                          angle: 3.14159,
-                          child: Text(
-                            card.number,
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          )),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
       ),
     );
   }
