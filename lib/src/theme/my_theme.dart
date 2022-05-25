@@ -51,8 +51,9 @@ class MyTheme {
         iconTheme: IconThemeData(color: colorScheme.onBackground),
       ),
       listTileTheme: ListTileThemeData(
-        iconColor: colorScheme.primary,
-      ),
+          iconColor: colorScheme.primary,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
       textTheme: TextTheme(
         headline1: TextStyle(
           fontFamily: 'GoogleSansBold',

@@ -6,6 +6,7 @@ import 'package:coati/src/nav/upOrDownPage.dart';
 import 'package:coati/src/utils/user_preferences.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/challenge.dart';
 import 'number_game_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -26,6 +27,34 @@ class HomePage extends StatelessWidget {
               },
               icon: Icon(Icons.rocket_rounded))*/
         ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text('Aah el mamon'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Ahora por mamon te toca...'),
+                  Text(Challenge().randomizedChallenge()),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('Listo'),
+                ),
+              ],
+            ),
+          );
+        },
+        label: Text('Dame un reto'),
+        icon: Icon(Icons.casino_rounded),
       ),
       body: ListView(children: [
         ListTile(

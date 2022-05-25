@@ -102,9 +102,10 @@ class _StrugglePageState extends State<StrugglePage> {
                           .copyWith(
                               color: Theme.of(context).colorScheme.background),
                     ),
-                    IconButton(
+                    Container(),
+                    /*IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.pause_rounded, color: Colors.grey)),
+                        icon: Icon(Icons.pause_rounded, color: Colors.grey)),*/
                   ],
                 )),
                 height: 70,
