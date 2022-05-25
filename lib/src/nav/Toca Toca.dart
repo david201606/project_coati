@@ -11,6 +11,7 @@ class TocaToca extends StatefulWidget {
 }
 
 class _TocaTocaState extends State<TocaToca> {
+  String NumRandom = 'X';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,21 +44,17 @@ class _TocaTocaState extends State<TocaToca> {
                   color: Colors.green[100],
                 ),
               ),
-              InkWell(
-                onLongPress: () {
-                  main() {
-                    var rng = new Random();
-                    for (var i = 0; i < 10; i++) {
-                      print(rng.nextInt(100));
-                    }
-                  }
-                },
-                child: Container(
-                  margin: const EdgeInsets.all(8),
-                  width: (MediaQuery.of(context).size.width * .5) - 16,
-                  height: (MediaQuery.of(context).size.height * .5) - 16,
-                  color: Colors.purple[100],
+              Container(
+                child: ElevatedButton(
+                  child: Text('Random $NumRandom'),
+                  onPressed: () {
+                    NumRandom = Random().nextInt(4).toString();
+                  },
                 ),
+                margin: const EdgeInsets.all(8),
+                width: (MediaQuery.of(context).size.width * .5) - 16,
+                height: (MediaQuery.of(context).size.height * .5) - 16,
+                color: Colors.purple[100],
               ),
             ],
           ),

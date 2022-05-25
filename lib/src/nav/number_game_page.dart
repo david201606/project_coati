@@ -117,7 +117,9 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
                       child: ElevatedButton(
                           onPressed: () {
                             starting= false;
-                            setState(())
+                            setState((){
+
+                            });
                             PlayCard pastCard = playingCard;
                             mixDeck();
 

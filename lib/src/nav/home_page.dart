@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
           },
           title: Text('Toca Toca'),
           subtitle: Text('Juega y despues reta'),
-          leading: Icon(Icons.sports_esports_rounded),
+          leading: Icon(Icons.check_box_outline_blank),
         ),
         ListTile(
           onTap: () {
