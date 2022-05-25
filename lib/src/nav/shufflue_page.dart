@@ -37,13 +37,15 @@ class _ShufflePageState extends State<ShufflePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       icon:
                           const Icon(Icons.stop_rounded, color: Colors.white)),
                   ElevatedButton(
                       onPressed: () {
                         setState(() {
-                          int num = Random().nextInt(widget.persons)+1;
+                          int num = Random().nextInt(widget.persons) + 1;
                           print('$num');
                           winnerPos = num;
                         });
