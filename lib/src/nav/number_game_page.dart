@@ -14,14 +14,25 @@ class NumbersGamePage extends StatefulWidget {
 class _NumbersGamePageState extends State<NumbersGamePage> {
   List<PlayCard> cardDeck = Deck().cards();
   List<String> cardsOrder = Deck().cardOrder();
-
+  int position = 0;
   late PlayCard playingCard;
+
+  bool starting = true;
 
   @override
   void initState() {
-    playingCard = PlayCard('S', Theme.of(context).colorScheme.primary,
-        Icons.theater_comedy_rounded, 0);
+    playingCard = PlayCard('', Colors.green, Icons.theater_comedy_rounded, 0);
     super.initState();
+  }
+
+  nextPosition() {
+    setState(() {
+      if (position == (cardsOrder.length - 1)) {
+        position = 0;
+      } else {
+        position++;
+      }
+    });
   }
 
   mixDeck() {
@@ -81,7 +92,7 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
-                  '1, 2, 3, ...',
+                  'A, 2, ..., Q, K',
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
@@ -98,23 +109,27 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Text(
-                        '',
+                        cardsOrder[position],
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ),
                     Expanded(
                       child: ElevatedButton(
                           onPressed: () {
+                            starting= false;
+                            setState(())
                             PlayCard pastCard = playingCard;
                             mixDeck();
 
-                            if (playingCard.weight == 100) {
+                            nextPosition();
+
+                            /*if (playingCard.weight == 100) {
                               allShotDialog();
                             } else {
                               if (playingCard.weight > pastCard.weight) {
                                 shotDialog();
                               }
-                            }
+                            }*/
                           },
                           style: ElevatedButton.styleFrom(
                               primary: Theme.of(context).colorScheme.primary,

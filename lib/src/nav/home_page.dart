@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
               ),
             );
           },
-          title: Text('1, 2, 3, 4, ...'),
+          title: Text('A, 2, ..., Q, K'),
           subtitle: Text('Adivina si esta arriba o abajo'),
           leading: Icon(Icons.help_rounded),
         ),
