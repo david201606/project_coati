@@ -13,11 +13,11 @@ import 'src/theme/my_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final prefs = UserPreferences();
+  /*final prefs = UserPreferences();
   await prefs.initPrefs();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
+  );*/
   runApp(MyApp());
 }
 

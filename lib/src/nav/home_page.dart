@@ -1,12 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coati/src/nav/Toca%20Toca.dart';
 import 'package:coati/src/nav/struggle_page.dart';
 import 'package:coati/src/nav/upOrDownPage.dart';
-import 'package:coati/src/tic_tac_toe.dart';
 import 'package:coati/src/utils/user_preferences.dart';
 import 'package:flutter/material.dart';
 
-import 'new_room.dart';
+import 'number_game_page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -18,7 +16,6 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Koaty'),
         actions: const [
-
           /*IconButton(
               onPressed: () {
                 FirebaseFirestore.instance.collection('hi').get().then((value) {
@@ -38,9 +35,9 @@ class HomePage extends StatelessWidget {
               ),
             );
           },
-          title: Text('Arriba o Abajo'),
+          title: Text('Luchitas'),
           subtitle: Text('Presiona el botón hasta que alguien pierda'),
-          leading: Icon(Icons.sports_esports_rounded),
+          leading: Icon(Icons.sports_kabaddi_rounded),
         ),
         ListTile(
           onTap: () {
@@ -54,7 +51,8 @@ class HomePage extends StatelessWidget {
           title: Text('Toca Toca'),
           subtitle: Text('Juega y despues reta'),
           leading: Icon(Icons.sports_esports_rounded),
-        ), ListTile(
+        ),
+        ListTile(
           onTap: () {
             Navigator.push(
               context,
@@ -66,6 +64,19 @@ class HomePage extends StatelessWidget {
           title: Text('¿Arriba o Abajo?'),
           subtitle: Text('Adivina si esta arriba o abajo'),
           leading: Icon(Icons.swap_vert_rounded),
+        ),
+        ListTile(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const NumbersGamePage(),
+              ),
+            );
+          },
+          title: Text('1, 2, 3, 4, ...'),
+          subtitle: Text('Adivina si esta arriba o abajo'),
+          leading: Icon(Icons.help_rounded),
         ),
       ]),
     );
