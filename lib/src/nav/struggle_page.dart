@@ -1,5 +1,4 @@
-import 'package:coati/src/nav/home_page.dart';
-import 'package:coati/src/nav/menu_page.dart';
+import 'package:coati/src/utils/challenge.dart';
 import 'package:flutter/material.dart';
 
 class StrugglePage extends StatefulWidget {
@@ -48,6 +47,8 @@ class _StrugglePageState extends State<StrugglePage> {
                                 context: context,
                                 builder: (context) => AlertDialog(
                                     title: const Text('Gano azul'),
+                                    content:
+                                        Text(Challenge().randomizedChallenge()),
                                     actions: [
                                       ElevatedButton(
                                           onPressed: () {
@@ -91,7 +92,8 @@ class _StrugglePageState extends State<StrugglePage> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: const Icon(Icons.stop_rounded, color: Colors.grey)),
+                        icon:
+                            const Icon(Icons.stop_rounded, color: Colors.grey)),
                     Text(
                       '${a < 0 ? a * -1 : a}',
                       style: Theme.of(context)
@@ -134,6 +136,8 @@ class _StrugglePageState extends State<StrugglePage> {
                                 context: context,
                                 builder: (context) => AlertDialog(
                                     title: const Text('Gano Rojo'),
+                                    content:
+                                    Text(Challenge().randomizedChallenge()),
                                     actions: [
                                       ElevatedButton(
                                           onPressed: () {

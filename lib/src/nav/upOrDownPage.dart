@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:coati/src/utils/challenge.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/card_obj.dart';
@@ -35,7 +36,7 @@ class _UpOrDownState extends State<UpOrDown> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text('Oops'),
-        content: Text('Te echas un shot'),
+        content: Text(Challenge().randomizedChallenge()),
         actions: [
           TextButton(
             onPressed: () {
@@ -54,7 +55,13 @@ class _UpOrDownState extends State<UpOrDown> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text('¡JA-JA!'),
-        content: Text('Todos se echan un shot'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('Todos hacen esto'),
+            Text(Challenge().randomizedChallenge()),
+          ],
+        ),
         actions: [
           TextButton(
             onPressed: () {

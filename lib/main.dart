@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       title: 'Koaty',
       debugShowCheckedModeBanner: false,
       theme: MyTheme.define(ColorsPalettes().lightColors()),
-      darkTheme: MyTheme.define(ColorsPalettes().darkColors()),
+      // darkTheme: MyTheme.define(ColorsPalettes().darkColors()),
       // home: const TTTPage(),
       // home: _prefs.userID == '' ? const AuthPage() : const MenuPage(),
       // home: StrugglePage(),

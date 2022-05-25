@@ -4,6 +4,7 @@ import 'package:coati/src/nav/upOrDownPage.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/card_obj.dart';
+import '../utils/challenge.dart';
 
 class NumbersGamePage extends StatefulWidget {
   const NumbersGamePage({Key? key}) : super(key: key);
@@ -72,7 +73,13 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text('¡JA-JA!'),
-        content: Text('Todos se echan un shot'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('Todos hacen esto'),
+            Text(Challenge().randomizedChallenge()),
+          ],
+        ),
         actions: [
           TextButton(
             onPressed: () {
