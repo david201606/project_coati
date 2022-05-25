@@ -1,4 +1,5 @@
 import 'package:coati/src/nav/Toca%20Toca.dart';
+import 'package:coati/src/nav/prueba.dart';
 import 'package:coati/src/nav/struggle_page.dart';
 import 'package:coati/src/nav/upOrDownPage.dart';
 import 'package:coati/src/utils/user_preferences.dart';
@@ -51,6 +52,19 @@ class HomePage extends StatelessWidget {
           title: Text('Toca Toca'),
           subtitle: Text('Juega y despues reta'),
           leading: Icon(Icons.check_box_outline_blank),
+        ),
+        ListTile(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const prueba(),
+              ),
+            );
+          },
+          title: Text('Prueba de animacion'),
+          subtitle: Text('Juega y despues reta'),
+          leading: Icon(Icons.cached),
         ),
         ListTile(
           onTap: () {

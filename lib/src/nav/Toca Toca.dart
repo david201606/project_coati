@@ -44,17 +44,31 @@ class _TocaTocaState extends State<TocaToca> {
                   color: Colors.green[100],
                 ),
               ),
-              Container(
-                child: ElevatedButton(
-                  child: Text('Random $NumRandom'),
-                  onPressed: () {
-                    NumRandom = Random().nextInt(4).toString();
-                  },
+              InkWell(
+                onLongPress: (){
+                  showDialog(
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (context) => AlertDialog(
+                        title:
+                        const Text('Mijo... Ya valio... 5seg en botella'),
+                        actions: [
+                          ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                setState(() {});
+                              },
+                              child: const Text('Simona'))
+                        ]),
+                  );
+                },
+                child: Container(
+                 // child: Text('Random $NumRandom'),
+                  margin: const EdgeInsets.all(8),
+                  width: (MediaQuery.of(context).size.width * .5) - 16,
+                  height: (MediaQuery.of(context).size.height * .5) - 16,
+                  color: Colors.purple[100],
                 ),
-                margin: const EdgeInsets.all(8),
-                width: (MediaQuery.of(context).size.width * .5) - 16,
-                height: (MediaQuery.of(context).size.height * .5) - 16,
-                color: Colors.purple[100],
               ),
             ],
           ),
@@ -62,6 +76,7 @@ class _TocaTocaState extends State<TocaToca> {
             children: [
               InkWell(
                 onLongPress: () {
+
                   print('Azul');
                 },
                 child: Container(
