@@ -1,6 +1,4 @@
-import 'package:coati/src/nav/budies_page.dart';
-import 'package:coati/src/nav/home_page.dart';
-import 'package:coati/src/nav/profile_page.dart';
+import 'package:coati/src/nav/games_page.dart';
 import 'package:flutter/material.dart';
 
 import 'new_room.dart';
@@ -15,7 +13,9 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   int selected = 0;
   List<Widget> pages = [
-    HomePage(),/*
+    GamesPage(),
+    GamesPage(),
+    /*
     BuddiesPage(),
     ProfilePage(),*/
   ];
@@ -34,6 +34,9 @@ class _MenuPageState extends State<MenuPage> {
         },
         destinations: const [
           NavigationDestination(
+            icon: Icon(Icons.rocket_launch_rounded),
+            label: 'Partidas',
+          ),NavigationDestination(
             icon: Icon(Icons.rocket_launch_rounded),
             label: 'Partidas',
           ),

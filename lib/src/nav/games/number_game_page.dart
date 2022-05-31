@@ -1,10 +1,11 @@
 import 'dart:math';
 
-import 'package:coati/src/nav/upOrDownPage.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:coati/src/nav/games/up_down_page.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/card_obj.dart';
-import '../utils/challenge.dart';
+import '../../utils/card_obj.dart';
+import '../../utils/challenge.dart';
 
 class NumbersGamePage extends StatefulWidget {
   const NumbersGamePage({Key? key}) : super(key: key);
@@ -14,8 +15,9 @@ class NumbersGamePage extends StatefulWidget {
 }
 
 class _NumbersGamePageState extends State<NumbersGamePage> {
+  AnimationController? animateController;
   List<PlayCard> cardDeck = Deck().cards();
-  List<String> cardsOrder = Deck().cardOrder();
+  List<PlayCard> cardsOrder = Deck().cardOrder();
   int position = 0;
   late PlayCard playingCard;
 
@@ -103,34 +105,49 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
-                  'A, 2, ..., Q, K',
+                  '¿Pares?',
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: PlayingCard(
-                  card: playingCard,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Text(
-                  starting ? '' : cardsOrder[position],
-                  style: Theme.of(context).textTheme.headlineSmall,
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 30, right: 60),
+                      child: PlayingCard(
+                        card: starting ? playingCard : cardsOrder[position],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30, left: 60),
+                      child: SlideInRight(
+                        duration: const Duration(milliseconds: 200),
+                        manualTrigger: true,
+                        controller: (controller) =>
+                            animateController = controller,
+                        child: PlayingCard(
+                          card: playingCard,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(
                 width: (MediaQuery.of(context).size.width * .7),
                 child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      animateController!.repeat();
+
                       mixDeck();
+
                       if (!starting) nextPosition();
 
                       if (playingCard.number == '') {
                         allShotDialog();
                       } else {
-                        if (playingCard.number == cardsOrder[position]) {
+                        if (playingCard.number == cardsOrder[position].number) {
                           shotDialog();
                         }
                       }
@@ -140,6 +157,7 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 20),
                         primary: Theme.of(context).colorScheme.primary,
                         onPrimary: Theme.of(context).colorScheme.onPrimary),
                     child: Text(starting ? 'Empezar' : 'Siguente Carta')),

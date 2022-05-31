@@ -1,9 +1,10 @@
 import 'dart:math';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:coati/src/utils/challenge.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/card_obj.dart';
+import '../../utils/card_obj.dart';
 
 class UpOrDown extends StatefulWidget {
   const UpOrDown({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class UpOrDown extends StatefulWidget {
 
 class _UpOrDownState extends State<UpOrDown> {
   List<PlayCard> cardDeck = Deck().cards();
-
+  AnimationController? animateController;
   late PlayCard playingCard;
 
   @override
@@ -86,49 +87,68 @@ class _UpOrDownState extends State<UpOrDown> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
-                  '¿Arriba o Abajo?',
+                  '¿Mayor o Menor?',
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * .7,
                 child: ElevatedButton(
-                    onPressed: () {
-                      PlayCard pastCard = playingCard;
-                      mixDeck();
+                  onPressed: () async {
+                    animateController!.repeat();
+                    await Future.delayed(const Duration(milliseconds: 300));
 
-                      if (playingCard.weight == 100) {
-                        allShotDialog();
-                      } else {
-                        if (playingCard.weight < pastCard.weight) {
-                          shotDialog();
-                        }
+                    PlayCard pastCard = playingCard;
+                    mixDeck();
+
+                    if (playingCard.weight == 100) {
+                      allShotDialog();
+                    } else {
+                      if (playingCard.weight < pastCard.weight) {
+                        shotDialog();
                       }
-                    },
-                    child: Text('Arriba')),
+                    }
+                  },
+                  child: Text('Mayor'),
+                  style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 25),
+                      primary: Theme.of(context).colorScheme.primary,
+                      onPrimary: Theme.of(context).colorScheme.onPrimary),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
-                child: PlayingCard(
-                  card: playingCard,
+                child: Spin(
+                  manualTrigger: true,
+                  controller: (controller) => animateController = controller,
+                  child: PlayingCard(
+                    card: playingCard,
+                  ),
                 ),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * .7,
                 child: ElevatedButton(
-                    onPressed: () {
-                      PlayCard pastCard = playingCard;
-                      mixDeck();
+                  onPressed: () async {
+                    animateController!.repeat();
+                    await Future.delayed(const Duration(milliseconds: 300));
+                    PlayCard pastCard = playingCard;
+                    mixDeck();
 
-                      if (playingCard.weight == 100) {
-                        allShotDialog();
-                      } else {
-                        if (playingCard.weight > pastCard.weight) {
-                          shotDialog();
-                        }
+                    if (playingCard.weight == 100) {
+                      allShotDialog();
+                    } else {
+                      if (playingCard.weight > pastCard.weight) {
+                        shotDialog();
                       }
-                    },
-                    child: Text('Abajo')),
+                    }
+                  },
+                  child: Text('Menor'),
+                  style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 25),
+                      primary: Theme.of(context).colorScheme.primary,
+                      onPrimary: Theme.of(context).colorScheme.onPrimary),
+                ),
               ),
             ],
           ),

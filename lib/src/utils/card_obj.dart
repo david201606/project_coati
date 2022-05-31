@@ -62,8 +62,23 @@ class Deck {
     ];
   }
 
-  List<String> cardOrder() =>
-      ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+  List<PlayCard> cardOrder() =>
+      [PlayCard('A', Colors.white, Icons.favorite_rounded, 1),
+        PlayCard('2', Colors.white, Icons.favorite_rounded, 2),
+        PlayCard('3', Colors.white, Icons.favorite_rounded, 3),
+        PlayCard('4', Colors.white, Icons.favorite_rounded, 4),
+        PlayCard('5', Colors.white, Icons.favorite_rounded, 5),
+        PlayCard('6', Colors.white, Icons.favorite_rounded, 6),
+        PlayCard('7', Colors.white, Icons.favorite_rounded, 7),
+        PlayCard('8', Colors.white, Icons.favorite_rounded, 8),
+        PlayCard('9', Colors.white, Icons.favorite_rounded, 9),
+        PlayCard('10', Colors.white, Icons.favorite_rounded, 10),
+        PlayCard('J ', Colors.white, Icons.favorite_rounded, 11),
+        PlayCard('Q', Colors.white, Icons.favorite_rounded, 12),
+        PlayCard('K', Colors.white, Icons.favorite_rounded, 13),];
+  
+  
+  
 }
 
 class PlayCard {
