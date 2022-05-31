@@ -118,9 +118,11 @@ class HomePage extends StatelessWidget {
               ),
             );
           },
-          title: Text('¿Arriba o Abajo?'),
+          title: Text('¿Mayor o Menor?'),
           subtitle: Text('Adivina si esta arriba o abajo'),
           leading: Icon(Icons.swap_vert_rounded),
+          trailing: IconButton(
+              onPressed: () {}, icon: const Icon(Icons.help_outline_rounded)),
         ),
         ListTile(
           onTap: () {
