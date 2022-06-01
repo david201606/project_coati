@@ -1,6 +1,3 @@
-import 'package:coati/src/nav/auth_page.dart';
-import 'package:coati/src/utils/auth_service.dart';
-import 'package:coati/src/utils/user_preferences.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -11,7 +8,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final UserPreferences _prefs = UserPreferences();
+  // final UserPreferences _prefs = UserPreferences();
 
   @override
   Widget build(BuildContext context) {
@@ -20,29 +17,18 @@ class _ProfilePageState extends State<ProfilePage> {
         title: const Text('Tú'),
       ),
       body: ListView(
-        children: [
+        children: const [
           ListTile(
-            title: Text(_prefs.userName),
-            subtitle: Text(_prefs.userEmail),
+            title: Text('David'),
+            subtitle: Text('El sholo'),
           ),
-          const ListTile(
-            title: const Text('Logros'),
+          ListTile(
+            title: Text('Logros'),
           ),
-          const ListTile(
+          ListTile(
             title: Text('Partidas'),
             subtitle: Text('Haz ganado 0 partidas (Jaja no vale madre)'),
           ),
-          ElevatedButton(
-              onPressed: () {
-                AuthService().signOut();
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AuthPage(),
-                  ),
-                );
-              },
-              child: const Text('Cerrar sesion'))
         ],
       ),
     );

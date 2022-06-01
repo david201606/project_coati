@@ -93,7 +93,7 @@ class _StrugglePageState extends State<StrugglePage> {
                           Navigator.pop(context);
                         },
                         icon:
-                            const Icon(Icons.stop_rounded, color: Colors.grey)),
+                            const Icon(Icons.cancel_rounded, color: Colors.grey)),
                     Text(
                       '${a < 0 ? a * -1 : a}',
                       style: Theme.of(context)

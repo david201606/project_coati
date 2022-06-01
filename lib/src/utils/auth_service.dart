@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coati/src/nav/parties_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../nav/menu_page.dart';
+
 import '../utils/dialogs.dart';
 import '../utils/user_preferences.dart';
 
@@ -14,7 +15,7 @@ class AuthService {
         .signInWithEmailAndPassword(email: email, password: password)
         .then((UserCredential userValue) {
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => const MenuPage()),
+          MaterialPageRoute(builder: (context) => const PartiesPage()),
           (Route<dynamic> route) => false);
       FirebaseFirestore.instance
           .collection('users')
@@ -28,7 +29,7 @@ class AuthService {
         _prefs.userProfileImage = userData.data()!['photo'];*/
 
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => const MenuPage()),
+            MaterialPageRoute(builder: (context) => const PartiesPage()),
             (Route<dynamic> route) => false);
         return true;
       });

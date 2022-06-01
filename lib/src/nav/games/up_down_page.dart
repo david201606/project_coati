@@ -21,6 +21,7 @@ class _UpOrDownState extends State<UpOrDown> {
   @override
   void initState() {
     mixDeck();
+
     super.initState();
   }
 
@@ -43,7 +44,7 @@ class _UpOrDownState extends State<UpOrDown> {
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text('Listo'),
+            child: const Text('Listo'),
           ),
         ],
       ),
@@ -155,7 +156,7 @@ class _UpOrDownState extends State<UpOrDown> {
           const Spacer(),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            color: Colors.black87,
+            color: Theme.of(context).colorScheme.onBackground,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -163,7 +164,8 @@ class _UpOrDownState extends State<UpOrDown> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: const Icon(Icons.stop_rounded, color: Colors.white)),
+                    icon: Icon(Icons.cancel_rounded,
+                        color: Theme.of(context).colorScheme.background)),
                 Text(
                   'Restan ${cardDeck.length} cartas',
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
@@ -196,8 +198,9 @@ class PlayingCard extends StatelessWidget {
         width: MediaQuery.of(context).size.width * .7,
         height: MediaQuery.of(context).size.height * .5,
         decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.black, width: 3),
+          color: Theme.of(context).colorScheme.background,
+          border: Border.all(
+              color: Theme.of(context).colorScheme.onBackground, width: 3),
           borderRadius: const BorderRadius.all(
             Radius.circular(30),
           ),

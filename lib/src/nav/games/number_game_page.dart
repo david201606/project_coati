@@ -167,7 +167,7 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
           const Spacer(),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            color: Colors.black87,
+            color: Theme.of(context).colorScheme.onBackground,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -175,7 +175,8 @@ class _NumbersGamePageState extends State<NumbersGamePage> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: const Icon(Icons.stop_rounded, color: Colors.white)),
+                    icon: Icon(Icons.cancel_rounded,
+                        color: Theme.of(context).colorScheme.background)),
                 Text(
                   'Juego sin fin',
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(

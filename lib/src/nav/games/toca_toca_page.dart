@@ -1,5 +1,5 @@
 import 'package:coati/src/nav/games_page.dart';
-import 'package:coati/src/nav/menu_page.dart';
+import 'package:coati/src/nav/party_menu_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 

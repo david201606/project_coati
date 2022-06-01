@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "12852964020",
+    "project_id": "project-coati",
+    "storage_bucket": "project-coati.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12852964020:android:c55bc87138e9c9d348c5e1",
+        "android_client_info": {
+          "package_name": "com.koaty.coati"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12852964020-ekt0m7mf7uqt6b7jnru0ovlsfmi6orle.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9Q0fNd1tRAsnl3x8xO-eX954g46zPDs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12852964020-ekt0m7mf7uqt6b7jnru0ovlsfmi6orle.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "12852964020-abtttmtotn7o96r97h4eo0hk8fjmg9h6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.koaty.coati"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
